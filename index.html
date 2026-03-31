@@ -1,104 +1,1309 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- Boostrap CDN CSS link-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <!-- Bootstrap CDN Icon links-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-    <style>
-        .custom-navbar {
-            background-color: #25415a;
-            border-radius: 30px;
-        }
-        .custom-link {
-            color: white !important;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IGCSE Subjects</title>
 
-        .custom-link:hover,
-        .custom-link.active {
-            color: #1de7bc !important;
-         }
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
-        .custom-link i {
-            transition: 0.2s;
-        }
-        .btn-login {
-            background-color: #1de7bc;
-            color: #25415a;
-            border-radius: 25px;
-        }
-        .btn-register {
-            border: 2px solid white;
-            color: white;
-            border-radius: 25px;
-        }
-        .dropdown-menu {
-            border-radius: 12px;
-        }
-    </style>
+  <style>
+    body {
+      background-color: #f4f7fb;
+    }
+
+    .custom-navbar {
+      background-color: #25415a;
+      border-radius: 30px;
+    }
+
+    .custom-link {
+      color: white !important;
+    }
+
+    .custom-link:hover,
+    .custom-link.active {
+      color: #1de7bc !important;
+    }
+
+    .navbar .nav-link {
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .navbar .nav-link i {
+      font-size: 16px;
+    }
+
+    .navbar-nav {
+      gap: 20px;
+    }
+
+    .btn-login {
+      background-color: #1de7bc;
+      border-radius: 25px;
+      font-size: 14px;
+      border: none;
+      color: #0f172a;
+      font-weight: 600;
+    }
+
+    .btn-register {
+      border: 2px solid white;
+      color: white;
+      border-radius: 25px;
+      font-size: 14px;
+      background: transparent;
+      font-weight: 600;
+    }
+
+    .btn-register:hover {
+      background: white;
+      color: #25415a;
+    }
+
+    .dropdown-menu {
+      border-radius: 12px;
+    }
+
+    .sidebar {
+      height: calc(100vh - 90px);
+      position: sticky;
+      top: 80px;
+    }
+
+    .sidebar-box {
+      background: #2c4a63;
+      border-radius: 20px;
+      padding: 20px;
+      height: 100%;
+      overflow-y: auto;
+      color: white;
+    }
+
+    .sidebar-title {
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .sidebar-section {
+      font-size: 13px;
+      color: #cbd5e1;
+      margin-bottom: 10px;
+    }
+
+    .sidebar-nav .nav-link {
+      background-color: #2ed3b7;
+      color: #0f172a;
+      border-radius: 12px;
+      margin-bottom: 10px;
+      font-weight: 500;
+      transition: 0.2s;
+      text-align: left;
+      border: none;
+    }
+
+    .sidebar-nav .nav-link:hover {
+      background-color: #26c0a7;
+      color: #0f172a;
+    }
+
+    .sidebar-nav .nav-link.active {
+      background-color: #1de7bc;
+      color: black;
+    }
+
+    .sidebar-box::-webkit-scrollbar,
+    .offcanvas-body::-webkit-scrollbar,
+    .auth-modal-body::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .sidebar-box::-webkit-scrollbar-thumb,
+    .offcanvas-body::-webkit-scrollbar-thumb,
+    .auth-modal-body::-webkit-scrollbar-thumb {
+      background: #aaa;
+      border-radius: 10px;
+    }
+
+    .content-panel {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      min-height: 700px;
+    }
+
+    .subject-title {
+      font-size: 42px;
+      font-weight: 700;
+      color: #25415a;
+      margin-bottom: 25px;
+      border-bottom: 2px solid #e9eef3;
+      padding-bottom: 15px;
+    }
+
+    .qa-block {
+      background: #f8fafc;
+      border-left: 5px solid #1de7bc;
+      border-radius: 16px;
+      padding: 22px 24px;
+      margin-bottom: 22px;
+    }
+
+    .qa-block h4 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #1f2d3d;
+      margin-bottom: 12px;
+    }
+
+    .qa-block p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #4b5563;
+      margin-bottom: 0;
+    }
+
+    .navbar-toggler {
+      border: 0;
+      box-shadow: none !important;
+    }
+
+    .navbar-toggler:focus {
+      box-shadow: none !important;
+    }
+
+    .navbar-toggler-icon {
+      filter: brightness(0) invert(1);
+    }
+
+    .mobile-subjects-btn {
+      background-color: #25415a;
+      border: none;
+      border-radius: 14px;
+      padding: 10px 18px;
+      font-weight: 600;
+    }
+
+    .mobile-subjects-btn:hover {
+      background-color: #1f364b;
+    }
+
+    .offcanvas {
+      background-color: #2c4a63;
+      color: white;
+    }
+
+    .offcanvas-title {
+      font-weight: 700;
+    }
+
+    .offcanvas .sidebar-section {
+      color: #cbd5e1;
+    }
+
+    .offcanvas .sidebar-nav .nav-link {
+      background-color: #2ed3b7;
+      color: #0f172a;
+      border-radius: 12px;
+      margin-bottom: 10px;
+      font-weight: 500;
+      border: none;
+      text-align: left;
+    }
+
+    .offcanvas .sidebar-nav .nav-link.active {
+      background-color: #1de7bc;
+      color: black;
+    }
+
+    /* Modal only */
+    .modal-backdrop.show {
+      background: rgba(15, 23, 42, 0.45);
+      backdrop-filter: blur(4px);
+    }
+
+    .modal-content {
+      border: none;
+      background: transparent;
+    }
+
+    .auth-modal-card {
+      border-radius: 24px;
+      overflow: hidden;
+      background: #ffffff;
+      box-shadow: 0 24px 60px rgba(15, 23, 42, 0.18);
+      position: relative;
+      max-height: calc(100vh - 2rem);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .auth-modal-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      z-index: 5;
+      background: rgba(255, 255, 255, 0.92);
+      border-radius: 50%;
+      padding: 8px;
+    }
+
+    .auth-modal-top {
+      padding: 32px 32px 12px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .auth-modal-top h2 {
+      margin-bottom: 8px;
+      color: #25415a;
+      font-weight: 800;
+    }
+
+    .auth-modal-subtitle {
+      margin-bottom: 0;
+      color: #64748b;
+      font-size: 15px;
+    }
+
+    .auth-modal-body {
+      padding: 14px 32px 32px;
+      overflow-y: auto;
+      flex: 1 1 auto;
+    }
+
+    .auth-label {
+      font-weight: 700;
+      font-size: 14px;
+      color: #1f2d3d;
+      margin-bottom: 8px;
+      padding-left: 4px;
+    }
+
+    .auth-input-group {
+      position: relative;
+    }
+
+    .auth-input-group .form-control {
+      padding: 14px 16px 14px 46px;
+      border-radius: 16px;
+      border: 1px solid #dbe3ea;
+      background-color: #fbfdff;
+    }
+
+    .auth-input-group .form-control:focus {
+      border-color: #1de7bc;
+      box-shadow: 0 0 0 0.2rem rgba(29, 231, 188, 0.18);
+      background-color: #ffffff;
+    }
+
+    .auth-input-icon {
+      position: absolute;
+      top: 50%;
+      left: 15px;
+      transform: translateY(-50%);
+      color: #25415a;
+      font-size: 16px;
+      z-index: 3;
+    }
+
+    .auth-section {
+      margin-bottom: 18px;
+    }
+
+    .auth-primary-btn {
+      background-color: #25415a;
+      border: none;
+      color: white;
+      font-weight: 700;
+      border-radius: 16px;
+      padding: 13px 20px;
+    }
+
+    .auth-primary-btn:hover {
+      background-color: #1f364b;
+      color: white;
+    }
+
+    .auth-soft-btn {
+      border: 1px solid #dbe3ea;
+      background-color: #fff;
+      color: #495057;
+      border-radius: 16px;
+      padding: 12px 16px;
+      font-weight: 600;
+    }
+
+    .auth-soft-btn:hover {
+      border-color: #1de7bc;
+      color: #25415a;
+      background-color: #f8fffd;
+    }
+
+    .auth-divider {
+      position: relative;
+      text-align: center;
+      margin: 22px 0 18px;
+    }
+
+    .auth-divider::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: #e9ecef;
+      transform: translateY(-50%);
+    }
+
+    .auth-divider span {
+      position: relative;
+      background: #fff;
+      padding: 0 14px;
+      color: #64748b;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .auth-link,
+    .auth-forgot-link,
+    .auth-agree-text a {
+      color: #25415a;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .auth-link:hover,
+    .auth-forgot-link:hover,
+    .auth-agree-text a:hover {
+      color: #1de7bc;
+      text-decoration: underline;
+    }
+
+    .auth-helper-text,
+    .auth-switch-text,
+    .auth-agree-text {
+      font-size: 14px;
+      color: #64748b;
+    }
+
+    .form-check-input:checked {
+      background-color: #1de7bc;
+      border-color: #1de7bc;
+    }
+
+    @media (max-width: 991.98px) {
+      .navbar-nav {
+        gap: 8px;
+      }
+
+      .navbar-collapse {
+        text-align: center;
+        padding-top: 14px;
+      }
+
+      .navbar-nav,
+      .navbar-nav .nav-item,
+      .navbar-nav .nav-link {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .navbar-buttons {
+        width: 100%;
+      }
+
+      .navbar-buttons .btn {
+        width: 100%;
+        max-width: 220px;
+      }
+
+      .dropdown-menu {
+        text-align: center;
+      }
+
+      .sidebar {
+        height: auto;
+        position: static;
+        top: auto;
+      }
+
+      .content-panel {
+        padding: 24px;
+        min-height: auto;
+      }
+
+      .subject-title {
+        font-size: 32px;
+      }
+
+      .modal-dialog {
+        margin: 1rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .auth-modal-card {
+        border-radius: 20px;
+        max-height: calc(100vh - 1rem);
+      }
+
+      .auth-modal-top {
+        padding: 24px 20px 10px;
+      }
+
+      .auth-modal-body {
+        padding: 12px 20px 24px;
+      }
+
+      .auth-modal-top h2 {
+        font-size: 24px;
+      }
+
+      .auth-primary-btn,
+      .auth-soft-btn {
+        padding: 12px 14px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <!-- navbar start -->
-    <nav class="navbar navbar-expand-lg custom-navbar px-4 py-2 mt-3 mx-3 shadow-sm">
-        <div class="container-fluid">
-            <div class="d-flex align-items-center me-3">
-                <div class="bg-white rounded-circle d-flex align-items-center justify-content-center me-3 shadow-sm" style="width: 50px; height: 50px;">
-                    <img src="image/Home.png" alt="Logo" style="width: 30px; height: 30px; object-fit: contain;">
-                </div>
-            </div>
 
-            <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="nav">
-                <ul class="navbar-nav me-auto gap-3">
-                    <li class="nav-item">
-                        <a class="nav-link custom-link active d-flex align-items-center gap-2" href="#">
-                            <i class="bi bi-house"></i> Home
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link custom-link active d-flex align-items-center gap-2" href="#">
-                            <i class="bi bi-book"></i> Subjects
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link custom-link active d-flex align-items-center gap-2" href="#">
-                            <i class="bi bi-person"></i> About
-                        </a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link custom-link dropdown-toggle active d-flex align-items-center gap-2" href="#" role="button" data-bs-toggle="dropdown">
-                            <i class="bi bi-grid"></i> Services
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Service 1</a></li>
-                            <li><a class="dropdown-item" href="#">Service 2</a></li>
-                            <li><a class="dropdown-item" href="#">Service 3</a></li>
-                        </ul>
-                    </li>
-                </ul>
-
-                <div class="d-flex">
-                    <button class="btn btn-login px-4 me-2">Login</button>
-                    <button class="btn btn-register px-4">Register</button>
-                </div>
-            </div>
+  <nav class="navbar navbar-expand-lg custom-navbar px-4 py-2 mt-3 mx-3 shadow-sm">
+    <div class="container-fluid">
+      <div class="d-flex align-items-center me-3">
+        <div class="bg-white rounded-circle d-flex align-items-center justify-content-center me-3 shadow-sm"
+          style="width: 50px; height: 50px;">
+          <img src="image/Home.png" style="width: 30px;" alt="Logo">
         </div>
-    </nav>
-    <!-- navbar end -->
+      </div>
 
+      <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#nav"
+        aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav me-auto mb-3 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link custom-link active" href="#"><i class="bi bi-house"></i> Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link custom-link" href="#"><i class="bi bi-book"></i> Subjects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link custom-link" href="#"><i class="bi bi-person"></i> About</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link custom-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+              <i class="bi bi-grid"></i> Services
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Service 1</a></li>
+              <li><a class="dropdown-item" href="#">Service 2</a></li>
+              <li><a class="dropdown-item" href="#">Service 3</a></li>
+            </ul>
+          </li>
+        </ul>
 
+        <div class="navbar-buttons d-flex flex-column flex-lg-row align-items-center gap-2">
+          <button class="btn btn-login px-4" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
+          <button class="btn btn-register px-4" data-bs-toggle="modal"
+            data-bs-target="#registerModal">Register</button>
+        </div>
+      </div>
+    </div>
+  </nav>
 
+  <div class="container-fluid mt-3">
+    <div class="row">
 
- 
-<!-- Bootstrap CDN JS links-->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
- 
+      <!-- Subjects button for mobile -->
+      <div class="col-12 d-lg-none mb-3 px-3">
+        <button class="btn btn-primary mobile-subjects-btn" type="button" data-bs-toggle="offcanvas"
+          data-bs-target="#subjectsOffcanvas" aria-controls="subjectsOffcanvas">
+          Subjects
+        </button>
+      </div>
+
+      <!-- Desktop sidebar -->
+      <div class="col-lg-3 d-none d-lg-block sidebar p-3">
+        <div class="sidebar-box">
+          <h5 class="sidebar-title">IGCSE SUBJECTS</h5>
+          <p class="sidebar-section">Core subjects</p>
+
+          <div class="nav flex-column nav-pills sidebar-nav" id="desktop-subject-tabs" role="tablist"
+            aria-orientation="vertical">
+            <button class="nav-link active" id="english-tab" data-bs-toggle="pill" data-bs-target="#english"
+              type="button" role="tab">English</button>
+            <button class="nav-link" id="math-tab" data-bs-toggle="pill" data-bs-target="#math" type="button"
+              role="tab">Mathematics</button>
+            <button class="nav-link" id="science-tab" data-bs-toggle="pill" data-bs-target="#science" type="button"
+              role="tab">Science</button>
+
+            <p class="sidebar-section mt-3">Elective subjects</p>
+            <button class="nav-link" id="business-tab" data-bs-toggle="pill" data-bs-target="#business" type="button"
+              role="tab">Business</button>
+            <button class="nav-link" id="economics-tab" data-bs-toggle="pill" data-bs-target="#economics"
+              type="button" role="tab">Economics</button>
+            <button class="nav-link" id="accounting-tab" data-bs-toggle="pill" data-bs-target="#accounting"
+              type="button" role="tab">Accounting</button>
+            <button class="nav-link" id="ict-tab" data-bs-toggle="pill" data-bs-target="#ict" type="button"
+              role="tab">ICT</button>
+            <button class="nav-link" id="cs-tab" data-bs-toggle="pill" data-bs-target="#cs" type="button"
+              role="tab">Computer Science</button>
+            <button class="nav-link" id="geography-tab" data-bs-toggle="pill" data-bs-target="#geography"
+              type="button" role="tab">Geography</button>
+            <button class="nav-link" id="history-tab" data-bs-toggle="pill" data-bs-target="#history" type="button"
+              role="tab">History</button>
+            <button class="nav-link" id="art-tab" data-bs-toggle="pill" data-bs-target="#art" type="button"
+              role="tab">Art & Design</button>
+            <button class="nav-link" id="french-tab" data-bs-toggle="pill" data-bs-target="#french" type="button"
+              role="tab">French</button>
+            <button class="nav-link" id="arabic-tab" data-bs-toggle="pill" data-bs-target="#arabic" type="button"
+              role="tab">Arabic</button>
+            <button class="nav-link" id="pe-tab" data-bs-toggle="pill" data-bs-target="#pe" type="button"
+              role="tab">Physical Education</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main content -->
+      <div class="col-12 col-lg-9 p-4">
+        <div class="tab-content content-panel" id="subject-tab-content">
+
+          <div class="tab-pane fade show active" id="english" role="tabpanel">
+            <h1 class="subject-title">English</h1>
+
+            <div class="qa-block">
+              <h4>What is English in IGCSE?</h4>
+              <p>
+                IGCSE English helps students develop strong reading, writing, speaking, and listening skills.
+                It teaches learners how to communicate clearly, accurately, and confidently in different situations.
+                Students study a variety of texts and learn how language is used to inform, describe, and persuade.
+              </p>
+            </div>
+
+            <div class="qa-block">
+              <h4>What do students learn in English?</h4>
+              <p>
+                Students learn how to analyse passages, understand meaning, identify writers’ techniques, and
+                express ideas in well-structured writing. They also improve grammar, vocabulary, spelling, and
+                punctuation. In some courses, students may practise summary writing, speech writing, and directed
+                writing.
+              </p>
+            </div>
+
+            <div class="qa-block">
+              <h4>Why is English important?</h4>
+              <p>
+                English is important because it supports success in many other subjects and in daily life.
+                It helps students become better readers, better writers, and stronger communicators.
+                These skills are useful for further study, future careers, and effective communication in the modern
+                world.
+              </p>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="math" role="tabpanel">
+            <h1 class="subject-title">Mathematics</h1>
+
+            <div class="qa-block">
+              <h4>What is Mathematics in IGCSE?</h4>
+              <p>
+                IGCSE Mathematics develops students’ numerical, logical, and problem-solving skills.
+                It teaches learners how to work with numbers, formulas, shapes, graphs, and data in a clear and
+                systematic way.
+                Mathematics is a core subject that provides a strong foundation for science, business, and
+                technology-related fields.
+              </p>
+            </div>
+
+            <div class="qa-block">
+              <h4>What do students learn in Mathematics?</h4>
+              <p>
+                Students learn topics such as algebra, geometry, trigonometry, statistics, probability, ratios, and
+                equations.
+                They practise solving problems step by step and applying mathematical methods to real-life
+                situations.
+                They also learn how to interpret graphs, calculate measurements, and use logical reasoning
+                accurately.
+              </p>
+            </div>
+
+            <div class="qa-block">
+              <h4>Why is Mathematics important?</h4>
+              <p>
+                Mathematics is important because it helps students think critically and solve problems efficiently.
+                It is widely used in everyday life, from budgeting and shopping to understanding data and
+                measurements.
+                It is also essential for careers in engineering, finance, computing, architecture, and many
+                scientific professions.
+              </p>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="science" role="tabpanel">
+            <h1 class="subject-title">Science</h1>
+
+            <div class="qa-block">
+              <h4>What is Science in IGCSE?</h4>
+              <p>
+                IGCSE Science introduces students to the study of the natural world through observation,
+                experimentation, and explanation. It helps learners understand how living things, materials,
+                forces, and energy behave. Science encourages curiosity and teaches students how evidence is used
+                to explain everyday phenomena.
+              </p>
+            </div>
+
+            <div class="qa-block">
+              <h4>What do students learn in Science?</h4>
+              <p>
+                Students explore topics from Biology, Chemistry, and Physics depending on the course they take.
+                They may study cells, the human body, chemical reactions, electricity, energy, motion, and the
+                environment.
+                They also learn practical skills such as planning experiments, recording results, and drawing
+                scientific conclusions.
+              </p>
+            </div>
+
+            <div class="qa-block">
+              <h4>Why is Science important?</h4>
+              <p>
+                Science is important because it helps students understand the world around them and how things work.
+                It develops analytical thinking, practical investigation skills, and the ability to evaluate
+                evidence.
+                Science is also a valuable foundation for careers in medicine, engineering, research, and
+                environmental studies.
+              </p>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="business" role="tabpanel">
+            <h1 class="subject-title">Business Studies</h1>
+
+            <div class="qa-block">
+              <h4>What is Business Studies in IGCSE?</h4>
+              <p>
+                IGCSE Business Studies introduces students to the world of business and entrepreneurship.
+                It helps learners understand how businesses are organised, managed, and operated in local and global
+                markets.
+                Students explore how companies make decisions, compete, and respond to customer needs.
+              </p>
+            </div>
+
+            <div class="qa-block">
+              <h4>What do students learn in Business Studies?</h4>
+              <p>
+                Students learn about business ownership, marketing, production, finance, human resources, and
+                operations.
+                They also study how businesses grow, manage costs, recruit staff, and make strategic decisions.
+                Real-world case studies are often used to help students apply their knowledge to practical business
+                situations.
+              </p>
+            </div>
+
+            <div class="qa-block">
+              <h4>Why is Business Studies important?</h4>
+              <p>
+                Business Studies is important because it develops decision-making, communication, and
+                problem-solving skills.
+                It helps students understand how businesses affect the economy and daily life.
+                The subject is useful for learners who are interested in entrepreneurship, management, marketing, or
+                finance.
+              </p>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="economics" role="tabpanel">
+            <h1 class="subject-title">Economics</h1>
+
+            <div class="qa-block">
+              <h4>What is Economics in IGCSE?</h4>
+              <p>
+                IGCSE Economics helps students understand how individuals, businesses, and governments make choices
+                about limited resources. It explores how economies work and how decisions affect production,
+                consumption, employment, and living standards.
+              </p>
+            </div>
+
+            <div class="qa-block">
+              <h4>What do students learn in Economics?</h4>
+              <p>
+                Students learn about supply and demand, opportunity cost, market systems, inflation, unemployment,
+                international trade, and government policies. They also examine how prices are set and how economic
+                decisions influence households, firms, and entire countries.
+              </p>
+            </div>
+
+            <div class="qa-block">
+              <h4>Why is Economics important?</h4>
+              <p>
+                Economics is important because it helps students understand real-world issues such as poverty,
+                rising prices, taxation, and trade. It builds analytical skills and encourages logical thinking
+                about money, choices, and public policies. It is especially useful for students interested in
+                business, finance, politics, or social studies.
+              </p>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="accounting" role="tabpanel">
+            <h1 class="subject-title">Accounting</h1>
+
+            <div class="qa-block">
+              <h4>What is Accounting in IGCSE?</h4>
+              <p>
+                IGCSE Accounting teaches students how financial information is recorded, organised, and interpreted.
+                It helps learners understand how businesses track income, expenses, assets, and profits.
+                Accounting is an essential subject for understanding how organisations manage money responsibly.
+              </p>
+            </div>
+
+            <div class="qa-block">
+              <h4>What do students learn in Accounting?</h4>
+              <p>
+                Students learn bookkeeping, ledger accounts, trial balances, income statements, and statements of
+                financial position.
+                They also study cash books, depreciation, corrections of errors, and the interpretation of financial
+                records.
+                Accuracy, organisation, and logical working are key parts of the subject.
+              </p>
+            </div>
+
+            <div class="qa-block">
+              <h4>Why is Accounting important?</h4>
+              <p>
+                Accounting is important because it helps students develop financial awareness and attention to
+                detail.
+                It supports understanding of how businesses measure performance and make financial decisions.
+                The subject is useful for future study and careers in accounting, auditing, banking, and business
+                management.
+              </p>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="ict" role="tabpanel">
+            <h1 class="subject-title">ICT</h1>
+
+            <div class="qa-block">
+              <h4>What is ICT in IGCSE?</h4>
+              <p>
+                IGCSE ICT focuses on the use of technology to create, process, store, and communicate information.
+                It teaches students how digital tools are used in education, business, and everyday life.
+                The subject combines practical computer skills with an understanding of how technology affects
+                society.
+              </p>
+            </div>
+
+            <div class="qa-block">
+              <h4>What do students learn in ICT?</h4>
+              <p>
+                Students learn how to use word processing, spreadsheets, databases, presentations, and web-based
+                tools.
+                They also study topics such as data security, communication systems, file management, and the
+                ethical use of technology.
+                Many tasks involve practical work on computers as well as theory-based understanding.
+              </p>
+            </div>
+
+            <div class="qa-block">
+              <h4>Why is ICT important?</h4>
+              <p>
+                ICT is important because digital skills are needed in almost every modern career.
+                It helps students work efficiently, organise information, and use technology responsibly.
+                The subject prepares learners for further study and for a world where computers and digital
+                communication are essential.
+              </p>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="cs" role="tabpanel">
+            <h1 class="subject-title">Computer Science</h1>
+
+            <div class="qa-block">
+              <h4>What is Computer Science in IGCSE?</h4>
+              <p>
+                IGCSE Computer Science helps students understand how computers work and how software is created.
+                It introduces programming, problem-solving, and the principles behind computer systems.
+                The subject is designed for learners who want to explore the logic and structure of computing.
+              </p>
+            </div>
+
+            <div class="qa-block">
+              <h4>What do students learn in Computer Science?</h4>
+              <p>
+                Students study programming concepts such as variables, loops, conditions, arrays, and algorithms.
+                They also learn about data representation, hardware, software, networks, cybersecurity, and logic.
+                In many parts of the course, students apply their knowledge by designing and writing simple
+                programs.
+              </p>
+            </div>
+
+            <div class="qa-block">
+              <h4>Why is Computer Science important?</h4>
+              <p>
+                Computer Science is important because it develops logical thinking, creativity, and technical
+                problem-solving skills.
+                It helps students understand the technology that powers modern systems and applications.
+                It is an excellent foundation for careers in software development, data science, artificial
+                intelligence, and engineering.
+              </p>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="geography" role="tabpanel">
+            <h1 class="subject-title">Geography</h1>
+
+            <div class="qa-block">
+              <h4>What is Geography in IGCSE?</h4>
+              <p>
+                IGCSE Geography helps students understand the relationship between people, places, and the
+                environment.
+                It explores both physical processes, such as rivers and weather, and human issues, such as
+                population and urban growth.
+                Geography encourages learners to think about the world at local, regional, and global levels.
+              </p>
+            </div>
+
+            <div class="qa-block">
+              <h4>What do students learn in Geography?</h4>
+              <p>
+                Students study topics such as climate, natural hazards, ecosystems, settlement, migration, and
+                development.
+                They also learn map skills, data interpretation, and fieldwork techniques.
+                The subject often involves analysing case studies and understanding how environmental and human
+                systems are connected.
+              </p>
+            </div>
+
+            <div class="qa-block">
+              <h4>Why is Geography important?</h4>
+              <p>
+                Geography is important because it helps students understand major global challenges such as climate
+                change, resource management, and urbanisation. It develops research, analysis, and decision-making
+                skills.
+                It is valuable for students interested in environmental science, travel, planning, and international
+                development.
+              </p>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="history" role="tabpanel">
+            <h1 class="subject-title">History</h1>
+
+            <div class="qa-block">
+              <h4>What is History in IGCSE?</h4>
+              <p>
+                IGCSE History helps students understand important events, people, and changes from the past.
+                It teaches learners how societies developed and how historical events continue to influence the
+                present.
+                The subject encourages critical thinking through the study of evidence, causes, consequences, and
+                interpretations.
+              </p>
+            </div>
+
+            <div class="qa-block">
+              <h4>What do students learn in History?</h4>
+              <p>
+                Students study selected historical periods, major conflicts, international relations, and social
+                change.
+                They learn how to examine sources, compare viewpoints, and build reasoned arguments using historical
+                evidence.
+                Topics vary by syllabus, but often include world wars, political change, and international
+                developments.
+              </p>
+            </div>
+
+            <div class="qa-block">
+              <h4>Why is History important?</h4>
+              <p>
+                History is important because it helps students understand how the modern world was shaped.
+                It develops research, writing, evaluation, and argument skills.
+                The subject is useful for students interested in law, politics, journalism, education, and the
+                humanities.
+              </p>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="art" role="tabpanel">
+            <h1 class="subject-title">Art & Design</h1>
+
+            <div class="qa-block">
+              <h4>What is Art & Design in IGCSE?</h4>
+              <p>
+                IGCSE Art & Design allows students to express ideas creatively through visual work.
+                It helps learners explore drawing, painting, design, and other artistic processes while developing
+                technical and imaginative skills.
+                The subject encourages observation, experimentation, and personal expression.
+              </p>
+            </div>
+
+            <div class="qa-block">
+              <h4>What do students learn in Art & Design?</h4>
+              <p>
+                Students learn how to use different materials, techniques, and visual elements to create original
+                work.
+                They may explore colour, composition, texture, perspective, and research into artists’ styles.
+                The course often includes coursework and project development from initial ideas to final outcomes.
+              </p>
+            </div>
+
+            <div class="qa-block">
+              <h4>Why is Art & Design important?</h4>
+              <p>
+                Art & Design is important because it develops creativity, observation, and independent thinking.
+                It helps students communicate visually and build confidence in presenting original ideas.
+                The subject is valuable for those interested in design, architecture, media, fashion, and the
+                creative industries.
+              </p>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="french" role="tabpanel">
+            <h1 class="subject-title">French</h1>
+
+            <div class="qa-block">
+              <h4>What is French in IGCSE?</h4>
+              <p>
+                IGCSE French helps students learn to communicate in one of the world’s most widely spoken languages.
+                It develops practical language skills for everyday situations, travel, study, and cultural
+                understanding.
+                Students improve their confidence in using French in both spoken and written forms.
+              </p>
+            </div>
+
+            <div class="qa-block">
+              <h4>What do students learn in French?</h4>
+              <p>
+                Students learn vocabulary, grammar, pronunciation, and sentence structure in French.
+                They practise listening, speaking, reading, and writing through common topics such as school,
+                family, hobbies, travel, and future plans.
+                The course also helps learners understand aspects of French-speaking cultures.
+              </p>
+            </div>
+
+            <div class="qa-block">
+              <h4>Why is French important?</h4>
+              <p>
+                French is important because learning another language improves communication skills and cultural
+                awareness.
+                It can open opportunities for travel, international study, and employment.
+                It also supports memory, confidence, and the ability to understand people from different
+                backgrounds.
+              </p>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="arabic" role="tabpanel">
+            <h1 class="subject-title">Arabic</h1>
+
+            <div class="qa-block">
+              <h4>What is Arabic in IGCSE?</h4>
+              <p>
+                IGCSE Arabic helps students develop the ability to understand and use Arabic in meaningful contexts.
+                It supports communication skills, reading comprehension, and writing accuracy while building
+                knowledge of the language and its culture.
+                The course is suitable for students who want to strengthen their Arabic for academic or practical
+                use.
+              </p>
+            </div>
+
+            <div class="qa-block">
+              <h4>What do students learn in Arabic?</h4>
+              <p>
+                Students learn vocabulary, grammar, sentence structure, reading techniques, and writing skills in
+                Arabic.
+                They practise understanding texts, expressing opinions, and responding to different language tasks.
+                Depending on the syllabus, they may also develop listening and speaking skills for real-life
+                communication.
+              </p>
+            </div>
+
+            <div class="qa-block">
+              <h4>Why is Arabic important?</h4>
+              <p>
+                Arabic is important because it is one of the major international languages and is widely used across
+                many countries.
+                Learning Arabic helps students connect with culture, history, and communication in the Arab world.
+                It is valuable for future study, travel, business, and cross-cultural understanding.
+              </p>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="pe" role="tabpanel">
+            <h1 class="subject-title">Physical Education</h1>
+
+            <div class="qa-block">
+              <h4>What is Physical Education in IGCSE?</h4>
+              <p>
+                IGCSE Physical Education combines knowledge about sport, fitness, and the human body with practical
+                performance.
+                It helps students understand the importance of health, exercise, and active lifestyles.
+                The subject includes both theoretical learning and physical participation.
+              </p>
+            </div>
+
+            <div class="qa-block">
+              <h4>What do students learn in Physical Education?</h4>
+              <p>
+                Students learn about anatomy, physiology, training methods, fitness, nutrition, and the rules and
+                strategies of sports.
+                They may also study motivation, skill development, and factors that affect performance.
+                In the practical part of the course, students demonstrate their abilities in selected physical
+                activities.
+              </p>
+            </div>
+
+            <div class="qa-block">
+              <h4>Why is Physical Education important?</h4>
+              <p>
+                Physical Education is important because it promotes healthy habits, teamwork, discipline, and
+                self-improvement.
+                It helps students understand how exercise affects the body and mind.
+                The subject is useful for learners interested in sports science, coaching, physiotherapy, health,
+                and fitness careers.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Mobile offcanvas -->
+  <div class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="subjectsOffcanvas"
+    aria-labelledby="subjectsOffcanvasLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="subjectsOffcanvasLabel">IGCSE SUBJECTS</h5>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+
+    <div class="offcanvas-body">
+      <p class="sidebar-section">Core subjects</p>
+
+      <div class="nav flex-column nav-pills sidebar-nav" id="mobile-subject-tabs" role="tablist"
+        aria-orientation="vertical">
+        <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#english" data-bs-dismiss="offcanvas"
+          type="button" role="tab">English</button>
+        <button class="nav-link" data-bs-toggle="pill" data-bs-target="#math" data-bs-dismiss="offcanvas"
+          type="button" role="tab">Mathematics</button>
+        <button class="nav-link" data-bs-toggle="pill" data-bs-target="#science" data-bs-dismiss="offcanvas"
+          type="button" role="tab">Science</button>
+
+        <p class="sidebar-section mt-3">Elective subjects</p>
+        <button class="nav-link" data-bs-toggle="pill" data-bs-target="#business" data-bs-dismiss="offcanvas"
+          type="button" role="tab">Business</button>
+        <button class="nav-link" data-bs-toggle="pill" data-bs-target="#economics" data-bs-dismiss="offcanvas"
+          type="button" role="tab">Economics</button>
+        <button class="nav-link" data-bs-toggle="pill" data-bs-target="#accounting" data-bs-dismiss="offcanvas"
+          type="button" role="tab">Accounting</button>
+        <button class="nav-link" data-bs-toggle="pill" data-bs-target="#ict" data-bs-dismiss="offcanvas"
+          type="button" role="tab">ICT</button>
+        <button class="nav-link" data-bs-toggle="pill" data-bs-target="#cs" data-bs-dismiss="offcanvas"
+          type="button" role="tab">Computer Science</button>
+        <button class="nav-link" data-bs-toggle="pill" data-bs-target="#geography" data-bs-dismiss="offcanvas"
+          type="button" role="tab">Geography</button>
+        <button class="nav-link" data-bs-toggle="pill" data-bs-target="#history" data-bs-dismiss="offcanvas"
+          type="button" role="tab">History</button>
+        <button class="nav-link" data-bs-toggle="pill" data-bs-target="#art" data-bs-dismiss="offcanvas"
+          type="button" role="tab">Art & Design</button>
+        <button class="nav-link" data-bs-toggle="pill" data-bs-target="#french" data-bs-dismiss="offcanvas"
+          type="button" role="tab">French</button>
+        <button class="nav-link" data-bs-toggle="pill" data-bs-target="#arabic" data-bs-dismiss="offcanvas"
+          type="button" role="tab">Arabic</button>
+        <button class="nav-link" data-bs-toggle="pill" data-bs-target="#pe" data-bs-dismiss="offcanvas"
+          type="button" role="tab">Physical Education</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Login Modal -->
+  <div class="modal fade" id="loginModal" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="auth-modal-card">
+          <button class="btn-close auth-modal-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+          <div class="auth-modal-top">
+            <h2>Welcome Back</h2>
+            <p class="auth-modal-subtitle">Sign in to continue your learning journey</p>
+          </div>
+
+          <div class="auth-modal-body">
+            <form>
+              <div class="auth-section">
+                <label class="auth-label">Email or Username</label>
+                <div class="auth-input-group">
+                  <i class="bi bi-person-circle auth-input-icon"></i>
+                  <input type="text" class="form-control" placeholder="Enter your email or username" required>
+                </div>
+              </div>
+
+              <div class="auth-section">
+                <label class="auth-label">Password</label>
+                <div class="auth-input-group">
+                  <i class="bi bi-shield-lock auth-input-icon"></i>
+                  <input type="password" class="form-control" placeholder="Enter your password" required>
+                </div>
+              </div>
+
+              <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-3">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="rememberMe" checked>
+                  <label class="form-check-label" for="rememberMe">Remember me</label>
+                </div>
+                <a href="#" class="auth-forgot-link">Forgot password?</a>
+              </div>
+
+              <button type="submit" class="btn auth-primary-btn w-100 mb-2">
+                <i class="bi bi-box-arrow-in-right me-2"></i>Login
+              </button>
+
+              <div class="auth-divider">
+                <span>or continue with</span>
+              </div>
+
+              <div class="row g-2">
+                <div class="col-6">
+                  <button type="button" class="btn auth-soft-btn w-100">
+                    <i class="bi bi-google me-2"></i>Google
+                  </button>
+                </div>
+                <div class="col-6">
+                  <button type="button" class="btn auth-soft-btn w-100">
+                    <i class="bi bi-apple me-2"></i>Apple
+                  </button>
+                </div>
+              </div>
+
+              <div class="text-center mt-3 auth-switch-text">
+                Don’t have an account?
+                <a href="#" class="auth-link" data-bs-toggle="modal" data-bs-target="#registerModal"
+                  data-bs-dismiss="modal">Register now</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Register Modal -->
+  <div class="modal fade" id="registerModal" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="auth-modal-card">
+          <button class="btn-close auth-modal-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+          <div class="auth-modal-top">
+            <h2>Create Account</h2>
+            <p class="auth-modal-subtitle">Join now and get started with your subjects</p>
+          </div>
+
+          <div class="auth-modal-body">
+            <form>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="auth-label">First Name</label>
+                  <div class="auth-input-group">
+                    <i class="bi bi-person auth-input-icon"></i>
+                    <input type="text" class="form-control" placeholder="First name" required>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <label class="auth-label">Last Name</label>
+                  <div class="auth-input-group">
+                    <i class="bi bi-person auth-input-icon"></i>
+                    <input type="text" class="form-control" placeholder="Last name" required>
+                  </div>
+                </div>
+              </div>
+
+              <div class="auth-section mt-3">
+                <label class="auth-label">Username</label>
+                <div class="auth-input-group">
+                  <i class="bi bi-at auth-input-icon"></i>
+                  <input type="text" class="form-control" placeholder="Choose a username" required>
+                </div>
+              </div>
+
+              <div class="auth-section">
+                <label class="auth-label">Email Address</label>
+                <div class="auth-input-group">
+                  <i class="bi bi-envelope auth-input-icon"></i>
+                  <input type="email" class="form-control" placeholder="Enter your email address" required>
+                </div>
+              </div>
+
+              <div class="auth-section">
+                <label class="auth-label">Password</label>
+                <div class="auth-input-group">
+                  <i class="bi bi-lock auth-input-icon"></i>
+                  <input type="password" class="form-control" placeholder="Create a strong password" required>
+                </div>
+                <div class="auth-helper-text mt-2">Use at least 8 characters with a mix of letters and numbers.</div>
+              </div>
+
+              <div class="auth-section">
+                <label class="auth-label">Confirm Password</label>
+                <div class="auth-input-group">
+                  <i class="bi bi-patch-check auth-input-icon"></i>
+                  <input type="password" class="form-control" placeholder="Confirm your password" required>
+                </div>
+              </div>
+
+              <div class="form-check mb-3 mt-1">
+                <input class="form-check-input" type="checkbox" id="termsCheck" required>
+                <label class="form-check-label auth-agree-text" for="termsCheck">
+                  I agree to the <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a>
+                </label>
+              </div>
+
+              <button type="submit" class="btn auth-primary-btn w-100 mb-2">
+                <i class="bi bi-person-plus-fill me-2"></i>Create Account
+              </button>
+
+              <div class="auth-divider">
+                <span>or sign up with</span>
+              </div>
+
+              <div class="row g-2">
+                <div class="col-6">
+                  <button type="button" class="btn auth-soft-btn w-100">
+                    <i class="bi bi-google me-2"></i>Google
+                  </button>
+                </div>
+                <div class="col-6">
+                  <button type="button" class="btn auth-soft-btn w-100">
+                    <i class="bi bi-apple me-2"></i>Apple
+                  </button>
+                </div>
+              </div>
+
+              <div class="text-center mt-3 auth-switch-text">
+                Already have an account?
+                <a href="#" class="auth-link" data-bs-toggle="modal" data-bs-target="#loginModal"
+                  data-bs-dismiss="modal">Login here</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
